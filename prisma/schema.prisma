@@ -1,0 +1,194 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model Users {
+    UserId    String   @id
+    Role      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Warehouse {
+    UserId       String @id
+    supplierName String
+    category     String
+    type         String
+    length       Int
+    width        Int
+    quantity     Int
+    squareMeter  Int
+}
+
+model Purchases {
+    userId         String @id
+    buyerName      String
+    deliveryNumber Int
+    category       String
+    type           String
+    sign           String
+    color          String
+    length         Int
+    width          Int
+    quantity       Int
+    squareMeter    Int
+    pricePerMetre  Int
+    total          Int
+}
+
+model Sales {
+    UserId         String   @id
+    clinetName     String
+    deliveryDdate  DateTime
+    deliveryNumber Int
+    category       String
+    type           String
+    sign           String
+    color          String
+    length         Int
+    width          Int
+    quantity       Int
+    squareMeter    Int
+    pricePerMetre  Int
+    total          Int
+}
+
+model CustomersStatus {
+    id             String   @id @default(cuid())
+    customerName   String
+    deliveryDate   DateTime
+    deliveryNumber Int
+    price          Int
+    PaymentNumber  Int
+    PaymentDate    DateTime
+    Payment        Int
+    rest           Int
+}
+
+model SupliersStatus {
+    id            String   @id @default(cuid())
+    SupliersName  String
+    DateOfReceipt DateTime
+    receiptNumber Int
+    price         Int
+    payingNumber  Int
+    payingDate    Int
+    pay           Int
+    rest          Int
+}
+
+model SupliersSituation {
+    id             String   @id @default(cuid())
+    SuplierName    String
+    deliveryDate   DateTime
+    deliveryNumber Int
+    price          Int
+    paymentNumber  Int
+    paymentDate    DateTime
+    pay            Int
+    rest           Int
+}
+
+model SupliersReturns {
+    id            String   @id @default(cuid())
+    suplierName   String
+    returnDate    DateTime
+    returnNumber  Int
+    category      String
+    type          String
+    signature     String
+    color         String
+    length        String
+    width         String
+    quantity      Int
+    squareMeter   Int
+    pricePerMetre Int
+    total         Int
+}
+
+model CustomersReturns {
+    id            String   @id @default(cuid())
+    customerName  String
+    returnDate    DateTime
+    returnNumber  Int
+    category      String
+    type          String
+    signature     String
+    color         String
+    length        String
+    width         String
+    quantity      Int
+    squareMeter   Int
+    pricePerMetre Int
+    total         Int
+}
+
+model PayingSuppliers {
+    id            String   @id @default(cuid())
+    supplierName  String
+    DateOfReceipt DateTime
+    ReceiptNumber Int
+    price         Int
+    payingMethode String
+}
+
+model PayingCustomers {
+    id            String   @id @default(cuid())
+    customerName  String
+    ReceiptNumber Int
+    DateOfReceipt DateTime
+    price         Int
+    payingMethode String
+    name          String
+    bankName      String
+    number        Int
+    city          String
+    ReceiptDate   DateTime
+}
+
+model Safe {
+    UserId        String   @id @default(cuid())
+    clientName    String
+    DateOfReceipt DateTime
+    ReceiptNumber Int
+    price         Int
+    payingMethode String
+    name          String
+    bankName      String
+    number        Int
+    city          String
+    paymentDate   DateTime
+}
+
+model Bank {
+    UserId        String   @id @default(cuid())
+    clientName    String
+    DateOfReceipt DateTime
+    ReceiptNumber Int
+    price         Int
+    payingMethode String
+    name          String
+    bankName      String
+    number        Int
+    city          String
+    paymentDate   DateTime
+}
+
+model Expenses {
+    UserId String   @id
+    type   String
+    price  Int
+    date   DateTime @default(now())
+}
+
+model salePoint {
+    id String @id @default(cuid())
+}
