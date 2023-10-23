@@ -36,7 +36,7 @@ const SheetCom = () => {
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
-            <SheetTitle>Logo</SheetTitle>
+            <SheetTitle>SKOUD</SheetTitle>
           </SheetHeader>
           <div className="flex min-h-screen text-black">
             <div className="flex w-full flex-col items-center">

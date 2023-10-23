@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const Returnsbtns = () => {
   const router = usePathname();
   return (
-    <div className="flex justify-end gap-2 pr-[2rem]">
+    <div className="flex gap-2 pt-3 justify-between  ">
       <Link href={"/returns/clients"}>
         <Button
           variant={router === `/returns/clients` ? "secondary" : "outline"}

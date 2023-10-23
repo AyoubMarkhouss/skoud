@@ -7,16 +7,16 @@ import { usePathname } from "next/navigation";
 const PayMethbtns = () => {
   const router = usePathname();
   return (
-    <div className="flex justify-end gap-2 pr-[2rem]">
+    <div className="flex gap-2 pt-3 justify-between  ">
       <Link href={"/money/safe"}>
         <Button variant={router === `/money/safe` ? "secondary" : "outline"}>
-          رجوعات الزبائن
-        </Button>
+        الخزينة       
+         </Button>
       </Link>
       <Link href={"/money/bank"}>
         <Button variant={router !== `/money/safe` ? "secondary" : "outline"}>
-          رجوعات الموردين
-        </Button>
+        الأبناك       
+         </Button>
       </Link>
     </div>
   );

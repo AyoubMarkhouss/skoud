@@ -41,7 +41,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="flex flex-col items-end pr-10 pt-5">
+        <div className="flex flex-col items-center md:items-end text-center pt-5 md:pr-5">
           <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
             لوحة التحكم
           </h3>

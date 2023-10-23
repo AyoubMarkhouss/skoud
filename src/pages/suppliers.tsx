@@ -8,7 +8,7 @@ import React from "react";
 const suppliers = () => {
   return (
     <div>
-      <div className="flex flex-col items-end pr-10 pt-5">
+      <div className="flex flex-col items-center md:items-end text-center p-4 md:pr-10 md:pt-5">
         <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
           وضعية الموردين
         </h3>

@@ -62,7 +62,7 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       <div>
-        <div className="flex items-center justify-between py-4">
+        <div className="flex items-center md:flex-row gap-4 md:gap-0 flex-col-reverse justify-between py-4">
           <Input
             placeholder="Filter Supplier Name..."
             value={
@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
             }
             className="max-w-sm"
           />
-          <div className="flex gap-2">
+          <div className="md:flex w-full md:w-fit gap-2 py-3 grid grid-cols-2">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button className="bg-cyan-500 hover:bg-cyan-600">طباعة</Button>

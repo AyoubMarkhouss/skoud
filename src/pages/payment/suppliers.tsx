@@ -10,13 +10,12 @@ const suppliers = () => {
   return (
     <div>
       <div>
-        <div className="flex flex-row-reverse items-center justify-between px-10 pt-5">
-          <div className="flex flex-col items-end">
+        <div className="flex flex-col md:flex-row-reverse items-center justify-between px-10 pt-5">
+          <div className="flex flex-col items-center md:items-end text-center">
             <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-              رجوعات الزبائن
-            </h3>
+            أداءات الموردين            </h3>
             <p className="leading-7 text-muted-foreground">
-              يمكنك العثور على قائمة رجوعات الزبائن هنا
+              يمكنك العثور على قائمة أداءات الموردين هنا
             </p>
           </div>
           <Paymentbtns />
