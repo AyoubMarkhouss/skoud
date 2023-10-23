@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React from "react";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   XAxis,
   YAxis,
@@ -9,13 +10,29 @@ import {
   Area,
   ResponsiveContainer,
 } from "recharts";
-import { api } from "@/utils/api";
-import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-import { dataChartOne } from "@/lib/data";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+// ? just to get api compatibility
+// import { api } from "@/utils/api";
+
+// ? to check if user is logged in
+// import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import {
+  dataChartOne,
+  dataChartThree,
+  dataChartTwo,
+  type MyComponentProps,
+} from "@/lib/data";
 
 export default function Home() {
-  const { data } = api.post.hello.useQuery();
-  const user = useUser();
+  // ! this to do later
+  // const { data } = api.post.hello.useQuery();
+  // const user = useUser();
   return (
     <>
       <Head>
@@ -32,54 +49,84 @@ export default function Home() {
             يمكنك العثور على الإحصائيات الخاصة بك هنا
           </p>
         </div>
-        <div className="m-10 grid grid-cols-2 gap-10">
-          <div className="border bg-white">
-            <div className="pr-3 pt-2">
-              <h3 className="scroll-m-20 text-end text-xl font-semibold tracking-tight">
-                المبيعات
-              </h3>
-              <p className="text-end leading-7 text-muted-foreground">
+        <div className="m-10 grid grid-cols-1 gap-10 md:grid-cols-2">
+          <Card className="grid-cols-1">
+            <CardHeader>
+              <CardTitle className="text-end">المشتريات</CardTitle>
+              <CardDescription className="text-end">
+                يمكنك رؤية تقدم مشترياتك من هنا
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex lg:hidden">
+                <ScrollArea className=" whitespace-nowrap">
+                  <div className="flex w-[50rem] space-x-4 p-4">
+                    <Chart data={dataChartOne} key="4732" />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </div>
+              <div className="hidden lg:flex">
+                <Chart data={dataChartOne} key="ggd-67" />
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="grid-cols-1">
+            <CardHeader>
+              <CardTitle className="text-end">المبيعات</CardTitle>
+              <CardDescription className="text-end">
                 يمكنك رؤية تقدم مبيعاتك من هنا
-              </p>
-            </div>
-            <Chart />
-          </div>
-          <div className="border bg-white">
-            <div className="pr-3 pt-2">
-              <h3 className="scroll-m-20 text-end text-xl font-semibold tracking-tight">
-                المبيعات
-              </h3>
-              <p className="text-end leading-7 text-muted-foreground">
-                يمكنك رؤية تقدم مبيعاتك من هنا
-              </p>
-            </div>
-            <Chart />
-          </div>
-          <div className="col-span-2 border bg-white">
-            <div className="pr-3 pt-2">
-              <h3 className="scroll-m-20 text-end text-xl font-semibold tracking-tight">
-                الارباح
-              </h3>
-              <p className="text-end leading-7 text-muted-foreground">
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex lg:hidden">
+                <ScrollArea className=" whitespace-nowrap">
+                  <div className="flex w-[50rem] space-x-4 p-4">
+                    <Chart data={dataChartTwo} key="4732" />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </div>
+              <div className="hidden lg:flex">
+                <Chart data={dataChartTwo} key="73737" />
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="grid-cols-1 md:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-end">الارباح</CardTitle>
+              <CardDescription className="text-end">
                 يمكنك رؤية تقدم الارباح من هنا
-              </p>
-            </div>
-            <Chart />
-          </div>
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex lg:hidden">
+                <ScrollArea className=" whitespace-nowrap">
+                  <div className="flex w-[50rem] space-x-4 p-4">
+                    <Chart data={dataChartThree} key="4732" />
+                  </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
+              </div>
+              <div className="hidden lg:flex">
+                <Chart data={dataChartThree} key="4732" />
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
     </>
   );
 }
 
-export const Chart = ({ className }: { className?: string }) => {
+export const Chart: React.FC<MyComponentProps> = ({ data, key }) => {
   return (
-    <ResponsiveContainer className={className} width="100%" height={200}>
+    <ResponsiveContainer width="100%" height={200}>
       <AreaChart
         width={500}
         height={200}
-        data={dataChartOne}
-        syncId="anyId"
+        data={data}
+        syncId={key}
         margin={{
           top: 10,
           right: 30,
@@ -91,7 +138,12 @@ export const Chart = ({ className }: { className?: string }) => {
         <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
-        <Area type="monotone" dataKey="pv" stroke="#333333" fill="#0E9CFF" />
+        <Area
+          type="monotone"
+          dataKey="المكاسب"
+          stroke="#333333"
+          fill="#0E9CFF"
+        />
       </AreaChart>
     </ResponsiveContainer>
   );

@@ -1,5 +1,3 @@
-"use client";
-
 import { type ColumnDef } from "@tanstack/react-table";
 import {
   DropdownMenu,
@@ -11,31 +9,30 @@ import {
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
 import { Button } from "../../../button";
-// import { string } from "zod";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type TableReturnsClients = {
-  name: string,
-  tarikhirjaa: string,
-  raqamirjaa: string,
-  sinf: string,
-  nawaa: string,
-  rasma: string,
-  lawn: string,
-  tol: number,
-  aard: number,
-  aadad: number,
-  metrmoraba: number,
-  tamanmetr: number
-  
-  
-}
+export type returnClients = {
+  id: string;
+  clientName: string;
+  returnDate: string;
+  returnCode: string;
+  category: string;
+  type: string;
+  sign: string;
+  color: string;
+  length: number;
+  width: number;
+  quantity: number;
+  squareMeter: number;
+  pricePerMeter: number;
+  total: number;
+};
 
-export const columns: ColumnDef<TableReturnsClients>[] = [
+export const returnClientsColumns: ColumnDef<returnClients>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const TableReturnsClients = row.original;
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -48,9 +45,7 @@ export const columns: ColumnDef<TableReturnsClients>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(TableReturnsClients.raqamirjaa)
-              }
+              onClick={() => navigator.clipboard.writeText(payment.clientName)}
             >
               Copy delivery number
             </DropdownMenuItem>
@@ -62,54 +57,57 @@ export const columns: ColumnDef<TableReturnsClients>[] = [
       );
     },
   },
-  
   {
-    accessorKey: "tamanmetr",
+    accessorKey: "total",
+    header: "المجموع",
+  },
+  {
+    accessorKey: "pricePerMeter",
     header: "ثمن المتر",
-  },{
-    accessorKey: "metrmoraba",
+  },
+  {
+    accessorKey: "squareMeter",
     header: "المتر المربع",
-  },{
-    accessorKey: "aadad",
+  },
+  {
+    accessorKey: "quantity",
     header: "العدد",
-  },{
-    accessorKey: "aard",
+  },
+  {
+    accessorKey: "width",
     header: "العرض",
   },
   {
-    accessorKey: "tol",
-    header: "الطول ",
+    accessorKey: "length",
+    header: "الطول",
   },
   {
-    accessorKey: "lawn",
+    accessorKey: "color",
     header: "اللون",
   },
   {
-    accessorKey: "rasma",
+    accessorKey: "sign",
     header: "الرسمة",
   },
   {
-    accessorKey: "nawaa",
+    accessorKey: "type",
     header: "النوع",
   },
   {
-    accessorKey: "sinf",
+    accessorKey: "category",
     header: "الصنف",
   },
+
   {
-    accessorKey: "raqamirjaa",
-    header:"رقم الارجاع" ,
+    accessorKey: "returnCode",
+    header: "رقم الارجاع",
   },
   {
-    accessorKey: "tarikhirjaa",
+    accessorKey: "returnDate",
     header: "تاريخ الارجاع",
   },
   {
-    accessorKey: "name",
+    accessorKey: "clientName",
     header: "اسم الزبون",
   },
-  
-
-
-  
 ];

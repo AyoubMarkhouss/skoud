@@ -1,13 +1,16 @@
-import { type TableReturnsSuppliers, columns } from "@/components/ui/table/returns/suppliers/suppliers";
-import { DataTable } from "@/components/ui/table/returns/suppliers/suppliers-table";
+import {
+  type ReturnSuppli,
+  returnSuppliColumns,
+} from "@/components/ui/table/returns/suppliers/returnSuppli";
+import { DataTable } from "@/components/ui/table/purchases/purchases-table";
 import React from "react";
 import Returnsbtns from "@/components/Returnsbtns";
 
-const TableReturnsSuppliers = () => {
+const suppliers = () => {
   return (
     <div>
       <div>
-        <div className="flex flex-row-reverse items-center justify-between px-11 py-5">
+        <div className="flex flex-row-reverse items-center justify-between px-10 pt-5">
           <div className="flex flex-col items-end">
             <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
               رجوعات الموردين
@@ -19,84 +22,30 @@ const TableReturnsSuppliers = () => {
           <Returnsbtns />
         </div>
         <div className="container mx-auto py-10">
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={returnSuppliColumns} data={data} />
         </div>
       </div>
     </div>
   );
 };
 
-export default TableReturnsSuppliers;
+export default suppliers;
 
-const data: TableReturnsSuppliers[] = [
+const data: ReturnSuppli[] = [
   {
-    name: "said",
-    tarikhirjaa: "21/12/2020",
-    raqamirjaa: "123",
-    sinf: "sinf",
-    nawaa: "nawaa",
-    rasma: "rasma",
-    lawn: "black",
-    tol: 12,
-    aard: 32,
-    aadad: 3,
-    metrmoraba: 56,
-    tamanmetr: 65
-  },
-  {
-    name: "said",
-    tarikhirjaa: "21/12/2020",
-    raqamirjaa: "123",
-    sinf: "sinf",
-    nawaa: "nawaa",
-    rasma: "rasma",
-    lawn: "black",
-    tol: 12,
-    aard: 32,
-    aadad: 3,
-    metrmoraba: 56,
-    tamanmetr: 65
-  },
-  {
-    name: "said",
-    tarikhirjaa: "21/12/2020",
-    raqamirjaa: "123",
-    sinf: "sinf",
-    nawaa: "nawaa",
-    rasma: "rasma",
-    lawn: "black",
-    tol: 12,
-    aard: 32,
-    aadad: 3,
-    metrmoraba: 56,
-    tamanmetr: 65
-  },
-  {
-    name: "said",
-    tarikhirjaa: "21/12/2020",
-    raqamirjaa: "123",
-    sinf: "sinf",
-    nawaa: "nawaa",
-    rasma: "rasma",
-    lawn: "black",
-    tol: 12,
-    aard: 32,
-    aadad: 3,
-    metrmoraba: 56,
-    tamanmetr: 65
-  },
-  {
-    name: "said",
-    tarikhirjaa: "21/12/2020",
-    raqamirjaa: "123",
-    sinf: "sinf",
-    nawaa: "nawaa",
-    rasma: "rasma",
-    lawn: "black",
-    tol: 12,
-    aard: 32,
-    aadad: 3,
-    metrmoraba: 56,
-    tamanmetr: 65
+    id: "728ed52f",
+    supplierName: "ayman elgad",
+    category: "cate",
+    color: "marwan",
+    length: 45,
+    sign: "hi",
+    pricePerMeter: 34,
+    quantity: 0,
+    width: 20,
+    returnCode: "30",
+    squareMeter: 10,
+    returnDate: "12/05/2023",
+    total: 45,
+    type: "j",
   },
 ];

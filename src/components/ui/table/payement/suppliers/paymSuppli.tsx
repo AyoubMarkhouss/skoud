@@ -1,0 +1,72 @@
+"use client";
+
+import { type ColumnDef } from "@tanstack/react-table";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import More from "@/components/icons/More";
+import { Button } from "@/components/ui/button";
+
+// This type is used to define the shape of our data.
+// You can use a Zod schema here if you want.
+export type PaymSuppli = {
+  id: string;
+  supplierName: string;
+  paymentCode: string;
+  paymentDate: string;
+  paymentMethod: string;
+};
+
+export const paymSuppliColumns: ColumnDef<PaymSuppli>[] = [
+  {
+    id: "actions",
+    cell: ({ row }) => {
+      const payment = row.original;
+
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="h-8 w-8 p-0">
+              <span className="sr-only">Open menu</span>
+              <More className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuItem
+              onClick={() =>
+                navigator.clipboard.writeText(payment.supplierName)
+              }
+            >
+              Copy delivery number
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+  },
+  {
+    accessorKey: "paymentMethod",
+    header: "طريقة الدفع",
+  },
+  {
+    accessorKey: "paymentCode",
+    header: "رقم الأداء",
+  },
+  {
+    accessorKey: "paymentDate",
+    header: "تاريخ الأداء",
+  },
+  {
+    accessorKey: "supplierName",
+    header: "اسم المورد",
+  },
+];

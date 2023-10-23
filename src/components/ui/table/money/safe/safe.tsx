@@ -10,27 +10,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
-import { Button } from "../../button";
+import { Button } from "../../../button";
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Sells = {
+export type Safe = {
   id: string;
   clientName: string;
-  deliveryDate: string;
-  deliveryCode: string;
-  category: string;
-  type: string;
-  sign: string;
-  color: string;
-  length: number;
-  width: number;
-  quantity: number;
-  squareMeter: number;
-  pricePerMeter: number;
-  total: number;
+  paymentDate: string;
+  paymentCode: string;
+  price: string;
+  paymentMethod: string;
+  name: string;
+  bankName: string;
+  checkCode: string;
+  city: string;
+  payCheckDate: string;
 };
 
-export const sellsColumns: ColumnDef<Sells>[] = [
+export const safeColumns: ColumnDef<Safe>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
@@ -60,52 +58,40 @@ export const sellsColumns: ColumnDef<Sells>[] = [
     },
   },
   {
-    accessorKey: "clientName",
-    header: "المجموع",
+    accessorKey: "payCheckDate",
+    header: "تاريخ الدفع",
   },
   {
-    accessorKey: "pricePerMeter",
-    header: "ثمن المتر",
+    accessorKey: "city",
+    header: "المدينة",
   },
   {
-    accessorKey: "squareMeter",
-    header: "المتر المربع",
+    accessorKey: "checkCode",
+    header: "رقمه",
   },
   {
-    accessorKey: "quantity",
-    header: "العدد",
+    accessorKey: "bankName",
+    header: "اسم البنك",
   },
   {
-    accessorKey: "width",
-    header: "العرض",
+    accessorKey: "name",
+    header: "اسم",
   },
   {
-    accessorKey: "length",
-    header: "الطول",
+    accessorKey: "paymentMethod",
+    header: "طريقة الدفع",
   },
   {
-    accessorKey: "color",
-    header: "اللون",
+    accessorKey: "price",
+    header: "المبلغ",
   },
   {
-    accessorKey: "sign",
-    header: "الرسمة",
+    accessorKey: "paymentDate",
+    header: "رقم الأداء",
   },
   {
-    accessorKey: "type",
-    header: "النوع",
-  },
-  {
-    accessorKey: "category",
-    header: "الصنف",
-  },
-  {
-    accessorKey: "clientName",
-    header: "رقم التسليم",
-  },
-  {
-    accessorKey: "clientName",
-    header: "تاريخ التسليم",
+    accessorKey: "paymentDate",
+    header: "تاريخ الأداء",
   },
   {
     accessorKey: "clientName",

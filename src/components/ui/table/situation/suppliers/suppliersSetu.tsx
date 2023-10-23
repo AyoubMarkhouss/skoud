@@ -10,27 +10,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
-import { Button } from "../../button";
+import { Button } from "@/components/ui/button";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Sells = {
+export type suppliersStu = {
   id: string;
-  clientName: string;
+  supplierName: string;
   deliveryDate: string;
   deliveryCode: string;
-  category: string;
-  type: string;
-  sign: string;
-  color: string;
-  length: number;
-  width: number;
-  quantity: number;
-  squareMeter: number;
-  pricePerMeter: number;
-  total: number;
+  price: string;
+  priceCode: string;
+  payDate: string;
+  payment: number;
+  rest: number;
 };
 
-export const sellsColumns: ColumnDef<Sells>[] = [
+export const suppliersStuColumns: ColumnDef<suppliersStu>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
@@ -47,7 +42,9 @@ export const sellsColumns: ColumnDef<Sells>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.clientName)}
+              onClick={() =>
+                navigator.clipboard.writeText(payment.supplierName)
+              }
             >
               Copy delivery number
             </DropdownMenuItem>
@@ -60,55 +57,35 @@ export const sellsColumns: ColumnDef<Sells>[] = [
     },
   },
   {
-    accessorKey: "clientName",
-    header: "المجموع",
+    accessorKey: "rest",
+    header: "الباقي",
   },
   {
-    accessorKey: "pricePerMeter",
-    header: "ثمن المتر",
+    accessorKey: "payment",
+    header: "الدفع",
   },
   {
-    accessorKey: "squareMeter",
-    header: "المتر المربع",
+    accessorKey: "payDate",
+    header: "تاريخ الدفع",
   },
   {
-    accessorKey: "quantity",
-    header: "العدد",
+    accessorKey: "priceCode",
+    header: "رقم الدفع",
   },
   {
-    accessorKey: "width",
-    header: "العرض",
+    accessorKey: "price",
+    header: "المبلغ",
   },
   {
-    accessorKey: "length",
-    header: "الطول",
-  },
-  {
-    accessorKey: "color",
-    header: "اللون",
-  },
-  {
-    accessorKey: "sign",
-    header: "الرسمة",
-  },
-  {
-    accessorKey: "type",
-    header: "النوع",
-  },
-  {
-    accessorKey: "category",
-    header: "الصنف",
-  },
-  {
-    accessorKey: "clientName",
+    accessorKey: "deliveryCode",
     header: "رقم التسليم",
   },
   {
-    accessorKey: "clientName",
+    accessorKey: "deliveryDate",
     header: "تاريخ التسليم",
   },
   {
-    accessorKey: "clientName",
-    header: "اسم الزبون",
+    accessorKey: "supplierName",
+    header: "اسم المورد",
   },
 ];

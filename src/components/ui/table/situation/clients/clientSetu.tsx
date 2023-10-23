@@ -10,28 +10,26 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
-import { Button } from "../../button";
-// import { string } from "zod";
+import { Button } from "@/components/ui/button";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Tableclients = {
-  name: string,
-  tarikhtaslim: string,
-  raqamtaslim: string,
-  mablagh: number,
-  raqamdafaa: number,
-  tarikhdafaa: string,
-  dafaa: number,
-  lbaqi: number,
-  
-  
-}
+export type ClientsStu = {
+  id: string;
+  clientName: string;
+  deliveryDate: string;
+  deliveryCode: string;
+  price: string;
+  priceCode: string;
+  payDate: string;
+  payment: number;
+  rest: number;
+};
 
-export const columns: ColumnDef<Tableclients>[] = [
+export const clientsStuColumns: ColumnDef<ClientsStu>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const Tableclients = row.original;
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -44,9 +42,7 @@ export const columns: ColumnDef<Tableclients>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(Tableclients.raqamtaslim)
-              }
+              onClick={() => navigator.clipboard.writeText(payment.clientName)}
             >
               Copy delivery number
             </DropdownMenuItem>
@@ -58,42 +54,36 @@ export const columns: ColumnDef<Tableclients>[] = [
       );
     },
   },
-  
-  
   {
-    accessorKey: "lbaqi",
+    accessorKey: "rest",
     header: "الباقي",
   },
   {
-    accessorKey: "dafaa",
+    accessorKey: "payment",
     header: "الدفع",
   },
   {
-    accessorKey: "tarikhdafaa",
-    header: " تاريخ الدفع",
+    accessorKey: "payDate",
+    header: "تاريخ الدفع",
   },
   {
-    accessorKey: "raqamdafaa",
+    accessorKey: "priceCode",
     header: "رقم الدفع",
   },
   {
-    accessorKey: "mablagh",
+    accessorKey: "price",
     header: "المبلغ",
   },
   {
-    accessorKey: "raqamtaslim",
-    header:"رقم التسليم" ,
+    accessorKey: "deliveryCode",
+    header: "رقم التسليم",
   },
   {
-    accessorKey: "tarikhtaslim",
+    accessorKey: "deliveryDate",
     header: "تاريخ التسليم",
   },
   {
-    accessorKey: "name",
+    accessorKey: "clientName",
     header: "اسم الزبون",
   },
-  
-
-
-  
 ];

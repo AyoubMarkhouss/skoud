@@ -1,5 +1,8 @@
-import { type Tablesuppliers, columns } from "@/components/ui/table/suppliers/suppliers";
-import { DataTable } from "@/components/ui/table/suppliers/suppliers-table";
+import {
+  type suppliersStu,
+  suppliersStuColumns,
+} from "@/components/ui/table/situation/suppliers/suppliersSetu";
+import { DataTable } from "@/components/ui/table/purchases/purchases-table";
 import React from "react";
 
 const suppliers = () => {
@@ -14,7 +17,7 @@ const suppliers = () => {
         </p>
       </div>
       <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={suppliersStuColumns} data={data} />
       </div>
     </div>
   );
@@ -22,37 +25,16 @@ const suppliers = () => {
 
 export default suppliers;
 
-const data: Tablesuppliers[] = [
+const data: suppliersStu[] = [
   {
-    name: "samir",
-    tarikhtaslim: "21/12/2023",
-    raqamtaslim: "56",
-    mablagh: 2300,
-    raqamdafaa: 65,
-    tarikhdafaa: "12/12/2020",
-    dafaa: 2500,
-    lbaqi: 300,
-
-  },
-  {
-    name: "said",
-    tarikhtaslim: "21/12/2023",
-    raqamtaslim: "56",
-    mablagh: 500,
-    raqamdafaa: 65,
-    tarikhdafaa: "12/12/2020",
-    dafaa: 25500,
-    lbaqi: 3200,
-
-  },{
-    name: "farid",
-    tarikhtaslim: "21/12/2023",
-    raqamtaslim: "45",
-    mablagh: 200,
-    raqamdafaa: 5,
-    tarikhdafaa: "12/12/2020",
-    dafaa: 200,
-    lbaqi: 30,
-
+    id: "728ed52f",
+    deliveryCode: "26363 GF",
+    deliveryDate: "DHD JDJS",
+    payDate: "JDJDJ",
+    payment: 0,
+    price: "PRICE",
+    priceCode: "PRICE CODE",
+    rest: 5,
+    supplierName: "name",
   },
 ];

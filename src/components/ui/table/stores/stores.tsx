@@ -11,27 +11,26 @@ import {
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
 import { Button } from "../../button";
-// import { string } from "zod";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Tablesuppliers = {
-  name: string,
-  tarikhtaslim: string,
-  raqamtaslim: string,
-  mablagh: number,
-  raqamdafaa: number,
-  tarikhdafaa: string,
-  dafaa: number,
-  lbaqi: number,
-  
-  
-}
+export type Store = {
+  id: string;
+  SupplierName: string;
+  category: string;
+  type: string;
+  sign: string;
+  color: string;
+  length: number;
+  width: number;
+  quantity: number;
+  squareMeter: number;
+};
 
-export const columns: ColumnDef<Tablesuppliers>[] = [
+export const storeColumns: ColumnDef<Store>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const Tablesuppliers = row.original;
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -45,10 +44,10 @@ export const columns: ColumnDef<Tablesuppliers>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() =>
-                navigator.clipboard.writeText(Tablesuppliers.raqamtaslim)
+                navigator.clipboard.writeText(payment.SupplierName)
               }
             >
-              Copy delivery number
+              Copy supplier name
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Edit</DropdownMenuItem>
@@ -58,42 +57,46 @@ export const columns: ColumnDef<Tablesuppliers>[] = [
       );
     },
   },
-  
-  
   {
-    accessorKey: "lbaqi",
-    header: "الباقي",
+    accessorKey: "type",
+    header: "النوع",
   },
   {
-    accessorKey: "dafaa",
-    header: "الدفع",
+    accessorKey: "sign",
+    header: "الرسمة",
   },
   {
-    accessorKey: "tarikhdafaa",
-    header: " تاريخ الدفع",
+    accessorKey: "color",
+    header: "اللون",
   },
   {
-    accessorKey: "raqamdafaa",
-    header: "رقم الدفع",
+    accessorKey: "squareMeter",
+    header: () => <div className="text-center">المتر المربع</div>,
+    cell: ({ row }) => {
+      const square = parseFloat(row.getValue("squareMeter"));
+      const formatted = new Intl.NumberFormat("en-US").format(square) + " m²";
+
+      return <div className="text-center font-medium">{formatted}</div>;
+    },
   },
   {
-    accessorKey: "mablagh",
-    header: "المبلغ",
+    accessorKey: "width",
+    header: "العرض",
   },
   {
-    accessorKey: "raqamtaslim",
-    header:"رقم التسليم" ,
+    accessorKey: "length",
+    header: "الطول",
   },
   {
-    accessorKey: "tarikhtaslim",
-    header: "تاريخ التسليم",
+    accessorKey: "quantity",
+    header: "العدد",
   },
   {
-    accessorKey: "name",
+    accessorKey: "category",
+    header: "الصنف",
+  },
+  {
+    accessorKey: "SupplierName",
     header: "اسم المورد",
   },
-  
-
-
-  
 ];

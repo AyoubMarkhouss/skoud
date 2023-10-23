@@ -11,31 +11,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
 import { Button } from "../../../button";
-// import { string } from "zod";
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type TableReturnsSuppliers = {
-  name: string,
-  tarikhirjaa: string,
-  raqamirjaa: string,
-  sinf: string,
-  nawaa: string,
-  rasma: string,
-  lawn: string,
-  tol: number,
-  aard: number,
-  aadad: number,
-  metrmoraba: number,
-  tamanmetr: number
-  
-  
-}
+export type Bank = {
+  id: string;
+  clientName: string;
+  paymentDate: string;
+  paymentCode: string;
+  price: string;
+  paymentMethod: string;
+  name: string;
+  bankName: string;
+  checkCode: string;
+  city: string;
+  payCheckDate: string;
+};
 
-export const columns: ColumnDef<TableReturnsSuppliers>[] = [
+export const bankColumns: ColumnDef<Bank>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const TableReturnsSuppliers = row.original;
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -48,9 +45,7 @@ export const columns: ColumnDef<TableReturnsSuppliers>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() =>
-                navigator.clipboard.writeText(TableReturnsSuppliers.raqamirjaa)
-              }
+              onClick={() => navigator.clipboard.writeText(payment.clientName)}
             >
               Copy delivery number
             </DropdownMenuItem>
@@ -62,54 +57,44 @@ export const columns: ColumnDef<TableReturnsSuppliers>[] = [
       );
     },
   },
-  
   {
-    accessorKey: "tamanmetr",
-    header: "ثمن المتر",
-  },{
-    accessorKey: "metrmoraba",
-    header: "المتر المربع",
-  },{
-    accessorKey: "aadad",
-    header: "العدد",
-  },{
-    accessorKey: "aard",
-    header: "العرض",
+    accessorKey: "payCheckDate",
+    header: "تاريخ الدفع",
   },
   {
-    accessorKey: "tol",
-    header: "الطول ",
+    accessorKey: "city",
+    header: "المدينة",
   },
   {
-    accessorKey: "lawn",
-    header: "اللون",
+    accessorKey: "checkCode",
+    header: "رقمه",
   },
   {
-    accessorKey: "rasma",
-    header: "الرسمة",
-  },
-  {
-    accessorKey: "nawaa",
-    header: "النوع",
-  },
-  {
-    accessorKey: "sinf",
-    header: "الصنف",
-  },
-  {
-    accessorKey: "raqamirjaa",
-    header:"رقم الارجاع" ,
-  },
-  {
-    accessorKey: "tarikhirjaa",
-    header: "تاريخ الارجاع",
+    accessorKey: "bankName",
+    header: "اسم البنك",
   },
   {
     accessorKey: "name",
-    header: "اسم المورد",
+    header: "اسم",
   },
-  
-
-
-  
+  {
+    accessorKey: "paymentMethod",
+    header: "طريقة الدفع",
+  },
+  {
+    accessorKey: "price",
+    header: "المبلغ",
+  },
+  {
+    accessorKey: "paymentDate",
+    header: "رقم الأداء",
+  },
+  {
+    accessorKey: "paymentDate",
+    header: "تاريخ الأداء",
+  },
+  {
+    accessorKey: "clientName",
+    header: "اسم الزبون",
+  },
 ];

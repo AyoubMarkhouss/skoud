@@ -1,5 +1,8 @@
-import { type Tableclients, columns } from "@/components/ui/table/clients/clients";
-import { DataTable } from "@/components/ui/table/clients/clients-table";
+import {
+  type ClientsStu,
+  clientsStuColumns,
+} from "@/components/ui/table/situation/clients/clientSetu";
+import { DataTable } from "@/components/ui/table/situation/clients/clientSetu-table";
 import React from "react";
 
 const clients = () => {
@@ -14,7 +17,7 @@ const clients = () => {
         </p>
       </div>
       <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={clientsStuColumns} data={data} />
       </div>
     </div>
   );
@@ -22,42 +25,16 @@ const clients = () => {
 
 export default clients;
 
-const data: Tableclients[] = [
+const data: ClientsStu[] = [
   {
-    name: "hamid",
-    tarikhtaslim: "25/4/2012",
-    raqamtaslim: "1245",
-    mablagh: 2500,
-    raqamdafaa: 132,
-    tarikhdafaa: "12/12/2023",
-    dafaa: 2600,
-    lbaqi: 100,
-  },{
-    name: "said",
-    tarikhtaslim: "25/4/2012",
-    raqamtaslim: "95",
-    mablagh: 5000,
-    raqamdafaa: 192,
-    tarikhdafaa: "11/12/2023",
-    dafaa: 6000,
-    lbaqi: 1000,
-  },{
-    name: "hamid",
-    tarikhtaslim: "25/4/2012",
-    raqamtaslim: "1245",
-    mablagh: 2500,
-    raqamdafaa: 132,
-    tarikhdafaa: "12/12/2023",
-    dafaa: 2600,
-    lbaqi: 100,
-  },{
-    name: "said",
-    tarikhtaslim: "25/4/2012",
-    raqamtaslim: "95",
-    mablagh: 5000,
-    raqamdafaa: 192,
-    tarikhdafaa: "11/12/2023",
-    dafaa: 6000,
-    lbaqi: 1000,
+    id: "728ed52f",
+    clientName: "name",
+    deliveryCode: "name",
+    deliveryDate: "name",
+    payDate: "name",
+    payment: 0,
+    price: "name",
+    priceCode: "name",
+    rest: 0,
   },
 ];

@@ -1,5 +1,6 @@
-import { type Tablesells, columns } from "@/components/ui/table/sells/sells";
+import { type Sells, sellsColumns } from "@/components/ui/table/sells/sells";
 import { DataTable } from "@/components/ui/table/sells/sells-table";
+
 import React from "react";
 
 const sells = () => {
@@ -14,7 +15,7 @@ const sells = () => {
         </p>
       </div>
       <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={sellsColumns} data={data} />
       </div>
     </div>
   );
@@ -22,33 +23,21 @@ const sells = () => {
 
 export default sells;
 
-const data: Tablesells[] = [
+const data: Sells[] = [
   {
-    name: "ayoub",
-    tareekh: "20/12/2023",
-    raqam: "69",
-    sanf: "zarbi",
-    nawaa: "harir",
-    rasmah: "mora",
-    lawn: "string",
-    toul: 15,
-    aard: 16,
-    adad: 4,
-    metrmorabaa: 9,
-    metrprice: 130
+    id: "728ed52f",
+    clientName: "ayoub",
+    category: "marwan",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+    deliveryCode: "",
+    deliveryDate: "",
+    pricePerMeter: 0,
+    total: 0,
   },
-  {
-    name: "aymen",
-    tareekh: "5/12/2023",
-    raqam: "19",
-    sanf: "zarbi",
-    nawaa: "harir",
-    rasmah: "mora",
-    lawn: "red",
-    toul: 15,
-    aard: 16,
-    adad: 4,
-    metrmorabaa: 9,
-    metrprice: 130
-  }
 ];

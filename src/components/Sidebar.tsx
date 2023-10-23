@@ -8,7 +8,7 @@ const Sidebar = () => {
   const router = usePathname();
 
   return (
-    <div className=" right-0 min-h-screen w-[20rem] bg-[#161042] text-white">
+    <div className="right-0 z-50 hidden min-h-screen w-[20rem] bg-[#161042] text-white xl:flex">
       <div className="fixed flex w-[20rem] flex-col items-center">
         <h2 className="pt-10">LOGO</h2>
         <div className="mt-7 flex w-full flex-col gap-5 px-10">

@@ -1,5 +1,5 @@
-// import { type Payment, columns } from "@/components/ui/table/purchases";
-// import { DataTable } from "@/components/ui/table/purchases-table";
+import { DataTable } from "@/components/ui/table/purchases/purchases-table";
+import { storeColumns, type Store } from "@/components/ui/table/stores/stores";
 import React from "react";
 const stores = () => {
   return (
@@ -13,7 +13,7 @@ const stores = () => {
         </p>
       </div>
       <div className="container mx-auto py-10">
-        {/* <DataTable columns={columns} data={data} /> */}
+        <DataTable columns={storeColumns} data={data} />
       </div>
     </div>
   );
@@ -21,75 +21,65 @@ const stores = () => {
 
 export default stores;
 
-// const data: Payment[] = [
-//   {
-//     id: "728ed52f",
-//     SupplierName: "ayoub",
-//     category: "marwan",
-//     type: "turkish",
-//     sign: "hi",
-//     color: "red",
-//     length: 0,
-//     width: 20,
-//     quantity: 30,
-//     squareMeter: 10,
-//     deliveryDate: "12/05/2023",
-//     deliveryNumber: "17364 172",
-//   },
-//   {
-//     id: "728ed52f",
-//     SupplierName: "salma",
-//     category: "karim",
-//     type: "turkish",
-//     sign: "hi",
-//     color: "red",
-//     length: 0,
-//     width: 20,
-//     quantity: 30,
-//     squareMeter: 10,
-//     deliveryDate: "12/05/2023",
-//     deliveryNumber: "17364 172",
-//   },
-//   {
-//     id: "728ed52f",
-//     SupplierName: "houssin",
-//     category: "ayman",
-//     type: "turkish",
-//     sign: "hi",
-//     color: "red",
-//     length: 0,
-//     width: 20,
-//     quantity: 30,
-//     squareMeter: 10,
-//     deliveryDate: "12/05/2023",
-//     deliveryNumber: "17364 172",
-//   },
-//   {
-//     id: "728ed52f",
-//     SupplierName: "marwa",
-//     category: "iman",
-//     type: "turkish",
-//     sign: "hi",
-//     color: "red",
-//     length: 0,
-//     width: 20,
-//     quantity: 30,
-//     squareMeter: 10,
-//     deliveryDate: "12/05/2023",
-//     deliveryNumber: "17364 172",
-//   },
-//   {
-//     id: "728ed52f",
-//     SupplierName: "ayman",
-//     category: "hamza",
-//     type: "turkish",
-//     sign: "hi",
-//     color: "red",
-//     length: 0,
-//     width: 20,
-//     quantity: 30,
-//     squareMeter: 10,
-//     deliveryDate: "12/05/2023",
-//     deliveryNumber: "17364 172",
-//   },
-// ];
+const data: Store[] = [
+  {
+    id: "728ed52f",
+    SupplierName: "ayoub",
+    category: "marwan",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+  },
+  {
+    id: "728ed52f",
+    SupplierName: "salma",
+    category: "karim",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+  },
+  {
+    id: "728ed52f",
+    SupplierName: "houssin",
+    category: "ayman",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+  },
+  {
+    id: "728ed52f",
+    SupplierName: "marwa",
+    category: "iman",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+  },
+  {
+    id: "728ed52f",
+    SupplierName: "ayman",
+    category: "hamza",
+    type: "turkish",
+    sign: "hi",
+    color: "red",
+    length: 0,
+    width: 20,
+    quantity: 30,
+    squareMeter: 10,
+  },
+];

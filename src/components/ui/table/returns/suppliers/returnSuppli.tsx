@@ -1,5 +1,3 @@
-"use client";
-
 import { type ColumnDef } from "@tanstack/react-table";
 import {
   DropdownMenu,
@@ -10,15 +8,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import More from "@/components/icons/More";
-import { Button } from "../../button";
-
+import { Button } from "../../../button";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Purchases = {
+export type ReturnSuppli = {
   id: string;
-  SupplierName: string;
+  supplierName: string;
+  returnDate: string;
+  returnCode: string;
   category: string;
-  deliveryDate: string;
   type: string;
   sign: string;
   color: string;
@@ -26,12 +24,11 @@ export type Purchases = {
   width: number;
   quantity: number;
   squareMeter: number;
-  PricePerMetre: number;
+  pricePerMeter: number;
   total: number;
-  deliveryNumber: string;
 };
 
-export const columns: ColumnDef<Purchases>[] = [
+export const returnSuppliColumns: ColumnDef<ReturnSuppli>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
@@ -49,7 +46,7 @@ export const columns: ColumnDef<Purchases>[] = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() =>
-                navigator.clipboard.writeText(payment.deliveryNumber)
+                navigator.clipboard.writeText(payment.supplierName)
               }
             >
               Copy delivery number
@@ -63,38 +60,20 @@ export const columns: ColumnDef<Purchases>[] = [
     },
   },
   {
-    accessorKey: "deliveryDate",
-    header: "تاريخ التسليم",
-  },
-  {
     accessorKey: "total",
     header: "المجموع",
   },
   {
-    accessorKey: "PricePerMetre",
-    header: "  ثمن المتر",
-  },
-  {
-    accessorKey: "type",
-    header: "النوع",
-  },
-  {
-    accessorKey: "sign",
-    header: "الرسمة",
-  },
-  {
-    accessorKey: "color",
-    header: "اللون",
+    accessorKey: "pricePerMeter",
+    header: "ثمن المتر",
   },
   {
     accessorKey: "squareMeter",
-    header: () => <div className="text-right">المتر المربع</div>,
-    cell: ({ row }) => {
-      const square = parseFloat(row.getValue("squareMeter"));
-      const formatted = new Intl.NumberFormat("en-US").format(square) + " m²";
-
-      return <div className="text-center font-medium">{formatted}</div>;
-    },
+    header: "المتر المربع",
+  },
+  {
+    accessorKey: "quantity",
+    header: "العدد",
   },
   {
     accessorKey: "width",
@@ -105,19 +84,32 @@ export const columns: ColumnDef<Purchases>[] = [
     header: "الطول",
   },
   {
-    accessorKey: "quantity",
-    header: "العدد",
+    accessorKey: "color",
+    header: "اللون",
+  },
+  {
+    accessorKey: "sign",
+    header: "الرسمة",
+  },
+  {
+    accessorKey: "type",
+    header: "النوع",
   },
   {
     accessorKey: "category",
     header: "الصنف",
   },
+
   {
-    accessorKey: "deliveryNumber",
-    header: "رقم التسليم",
+    accessorKey: "returnCode",
+    header: "رقم الارجاع",
   },
   {
-    accessorKey: "SupplierName",
+    accessorKey: "returnDate",
+    header: "تاريخ الارجاع",
+  },
+  {
+    accessorKey: "supplierName",
     header: "اسم المورد",
   },
 ];

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 "use client";
 import React from "react";
 import {
@@ -64,12 +65,12 @@ export function DataTable<TData, TValue>({
           <Input
             placeholder="Filter Supplier Name..."
             value={
-              (table.getColumn("name")?.getFilterValue() as string) ??
+              (table.getColumn("SupplierName")?.getFilterValue() as string) ??
               ""
             }
             onChange={(event) =>
               table
-                .getColumn("name")
+                .getColumn("SupplierName")
                 ?.setFilterValue(event.target.value)
             }
             className="max-w-sm"
@@ -115,7 +116,7 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
       <div className="rounded-md border">
-        <Table className="text-center">
+        <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

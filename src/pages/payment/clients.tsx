@@ -1,10 +1,10 @@
+import Paymentbtns from "@/components/Paymentbtns";
 import {
-  type returnClients,
-  returnClientsColumns,
-} from "@/components/ui/table/returns/clients/returnClients";
-import { DataTable } from "@/components/ui/table/returns/clients/returnClients-table";
+  type PayClients,
+  columns,
+} from "@/components/ui/table/payement/clients/payClients";
+import { DataTable } from "@/components/ui/table/purchases/purchases-table";
 import React from "react";
-import Returnsbtns from "@/components/Returnsbtns";
 
 const clients = () => {
   return (
@@ -19,10 +19,10 @@ const clients = () => {
               يمكنك العثور على قائمة رجوعات الزبائن هنا
             </p>
           </div>
-          <Returnsbtns />
+          <Paymentbtns />
         </div>
         <div className="container mx-auto py-10">
-          <DataTable columns={returnClientsColumns} data={data} />
+          <DataTable columns={columns} data={data} />
         </div>
       </div>
     </div>
@@ -31,21 +31,18 @@ const clients = () => {
 
 export default clients;
 
-const data: returnClients[] = [
+const data: PayClients[] = [
   {
     id: "728ed52f",
-    clientName: "ayoub",
-    category: "marwan",
-    type: "turkish",
-    sign: "hi",
-    color: "red",
-    length: 0,
-    width: 20,
-    quantity: 30,
-    squareMeter: 10,
-    pricePerMeter: 37,
-    returnCode: "17364 172",
-    returnDate: "17364 172",
-    total: 34,
+    bankName: "cih",
+    city: "casa",
+    clientName: "ayman",
+    codeNumber: "code number",
+    consumeDate: "now",
+    name: "ayman elgad",
+    paymentCode: "pay code",
+    paymentDate: "pay date",
+    paymentMethod: "pay meth",
+    price: "pri",
   },
 ];
